@@ -107,7 +107,6 @@ return (
             <Image style={styles.img} source={burguer6}/>
           </Pressable>
           <Text style= {styles.textoingr} >Monster Burguer. Ingredientes: triple medallón de 150gr de carne, queso cheddar, doble bacon</Text>
-        
       </View>
       
       <View style={{marginTop: 30}}> 
@@ -127,9 +126,11 @@ return (
             data={cartItems}
             renderItem={({ item }) => (
               <View style={{width: 400}}>
-                <Text>{item.name}</Text>
-              </View>
-            )}
+                <Text>{item.name}</Text>  <Pressable onPress={() => handleModal(item.id)}>
+                <Text style={{ fontSize: 20 }}>X</Text>
+              </Pressable>
+            </View>
+          )}
             keyExtractor={(item) => item.id}
           />
       </View>  
