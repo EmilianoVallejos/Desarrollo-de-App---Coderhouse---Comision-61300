@@ -77,50 +77,46 @@ return (
       <View> 
         <Text style={ {fontSize: 40, fontWeight: 'bold'}}> Menú </Text>
       </View>
-      <View > 
-        <View style={{flexDirection: 'row'}}>  
+      <View> 
           <Pressable onPress={addItem}> 
-            <Image style={{width: 100, height:100, borderRadius: 10, marginTop:10}} source={burguer1}/>
+            <Image style={styles.img} source={burguer1}/>
           </Pressable>
-          <Text style={ {fontSize: 20, fontWeight: '300', padding: 10}} >Le Grande Burguer. Ingredientes: triple queso cheddar, tomates secos, mayonesa, doble medallón de 100gr de carne, salsa especial</Text>
-        </View>
-        <View style={{flexDirection: 'row'}}> 
+          <Text style={styles.textoingr} >Le Grande Burguer. Ingredientes: triple queso cheddar, tomates secos, mayonesa, doble medallón de 100gr de carne, salsa especial</Text>
+        
           <Pressable onPress={addItem}> 
-            <Image style={{width: 100, height:100, borderRadius: 10, marginTop:10}} source={burguer2}/>
+            <Image style={styles.img} source={burguer2}/>
           </Pressable>
-          <Text style={ {fontSize: 20, fontWeight: '300', padding: 10}} >La Smash Burguer. Ingredientes: queso danbo, doble medallón de 150gr de carne smasheada, cebolla caramelizada</Text>
-        </View>
-        <View style={{flexDirection: 'row'}}>  
+          <Text style={styles.textoingr} >La Smash Burguer. Ingredientes: queso danbo, doble medallón de 150gr de carne smasheada, cebolla caramelizada</Text>
+        
           <Pressable onPress={addItem}> 
-            <Image style={{width: 100, height:100, borderRadius: 10, marginTop:10}} source={burguer3}/>
+            <Image style={styles.img} source={burguer3}/>
           </Pressable>
-          <Text style={ {fontSize: 20, fontWeight: '300', padding: 10}} >Big Bross Burguer. Ingredientes: pan con sésamo, lechuga, tomate, 200gr de carne, mayonesa</Text>
-        </View>
-        <View style={{flexDirection: 'row'}}> 
+          <Text style={styles.textoingr} >Big Bross Burguer. Ingredientes: pan con sésamo, lechuga, tomate, 200gr de carne, mayonesa</Text>
+        
           <Pressable onPress={addItem}> 
-            <Image style={{width: 100, height:100, borderRadius: 10, marginTop:10}} source={burguer4}/>
+            <Image style={styles.img} source={burguer4}/>
           </Pressable>
-          <Text style={ {fontSize: 20, fontWeight: '300', padding: 10}} >Bacon Burguer. Ingredientes: doble bacon, doble medallón de 150gr de carne, lechuga repollada</Text>
-        </View>
-        <View style={{flexDirection: 'row'}}> 
+          <Text style={styles.textoingr} >Bacon Burguer. Ingredientes: doble bacon, doble medallón de 150gr de carne, lechuga repollada</Text>
+       
           <Pressable onPress={addItem}> 
-            <Image style={{width: 100, height:100, borderRadius: 10, marginTop:10}} source={burguer5}/>
+            <Image style={styles.img} source={burguer5}/>
           </Pressable>
-          <Text style={ {fontSize: 20, fontWeight: '300', padding: 10}} >Veggie Burguer. Ingredientes: medallón de 150gr de lenteja, tomates secos, salsa alioli</Text>
-        </View>
-        <View style={{flexDirection: 'row'}}> 
+          <Text style= {styles.textoingr} >Veggie Burguer. Ingredientes: medallón de 150gr de lenteja, tomates secos, salsa alioli</Text>
+         
           <Pressable onPress={addItem}> 
-            <Image style={{width: 100, height:100, borderRadius: 10, marginTop:10}} source={burguer6}/>
+            <Image style={styles.img} source={burguer6}/>
           </Pressable>
-          <Text style={ {fontSize: 20, fontWeight: '300', padding: 10}} >Monster Burguer. Ingredientes: triple medallón de 150gr de carne, queso cheddar, doble bacon</Text>
-        </View>
+          <Text style= {styles.textoingr} >Monster Burguer. Ingredientes: triple medallón de 150gr de carne, queso cheddar, doble bacon</Text>
+        
       </View>
+      
       <View style={{marginTop: 30}}> 
         <TextInput onChangeText={handleInputChange} placeholder='Desea agregar ingredientes a tu pedido?' value={inputValue} style={{ backgroundColor: '#87CEEB', borderColor: '#FFF8DC', borderWidth: 5, borderRadius: 8, width: 400, height: 20, padding: 30, justifyContent: 'center', alignItems: 'center' }} /> 
         <Pressable onPress={addItem}> 
           <Text style={ {fontSize: 30, fontWeight: 'bold', padding: 10}} >+</Text>
         </Pressable>
       </View>
+      
       <View> 
         <Pressable onPress={handleAddCounter}>
           <Text style= { {fontSize: 30}}> {counter} </Text>
@@ -128,19 +124,15 @@ return (
       </View>
       <View> 
         <FlatList
-          data={cartItems}
-          renderItem={({item})=>(
-            <View key={item.id}>
-              <Text>{item.name}</Text>
-              <Pressable onPress={()=> handleModal (item.id)}>
-                <Text style={ {fontSize: 30, fontWeight: 'bold'}}>
-                X
-                </Text>
-              </Pressable>
-            </View> 
-          )}
-          keyExtractor={item => item.id} />
-      </View>
+            data={cartItems}
+            renderItem={({ item }) => (
+              <View style={{width: 400}}>
+                <Text>{item.name}</Text>
+              </View>
+            )}
+            keyExtractor={(item) => item.id}
+          />
+      </View>  
     </View>
   );
 }
@@ -153,4 +145,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: Constants.statusBarHeight
   },
+  img: {
+    width: 100, 
+    height:100, 
+    borderRadius: 10, 
+    marginTop:10
+  },
+  textoingr: {
+    fontSize: 20, 
+    fontWeight: '300', 
+    padding: 10
+  }
+
 });
