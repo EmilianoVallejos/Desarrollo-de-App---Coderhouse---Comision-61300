@@ -11,18 +11,18 @@ const RemoveModal = ({ modalVisible, cartItems, setCartItems, setModalVisible, i
     setModalVisible(false)
   };
   return ( 
-    <Modal animationType='fade' visible={modalVisible}> 
-      <View>
-        <Text>
+    <Modal animationType='fade' visible={modalVisible} > 
+      <View style={styles.stlmodal}>
+        <Text style={{fontSize: 30, fontWeight: 400, marginTop: 10 }}>
           Deseas eliminar el producto?
         </Text>
         <Pressable onPress={removeItem}> 
-          <Text>
+          <Text style={{fontSize: 40, fontWeight: 600, margin: 50 }}>
             Sí
           </Text>
         </Pressable>
         <Pressable onPress={()=>setModalVisible(false)}> 
-          <Text>
+          <Text style={{fontSize: 40, fontWeight: 600, margin: 50 }}>
             No
           </Text>
         </Pressable>
@@ -33,9 +33,9 @@ const RemoveModal = ({ modalVisible, cartItems, setCartItems, setModalVisible, i
   export default RemoveModal;
 
   const styles = StyleSheet.create({
-    container: {
+    stlmodal: {
       flex: 1,
-      backgroundColor: '#5F9EA0',
+      backgroundColor: '#ea1313',
       alignItems: 'center',
       justifyContent: 'center',
       paddingTop: Constants.statusBarHeight

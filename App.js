@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {StatusBar} from 'expo-status-bar';
 import Constants from 'expo-constants';
-import {FlatList, Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
+import {FlatList, Pressable, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
 import RemoveModal from './src/components/RemoveModal';
 import Hamburguesa from "./src/components/Hamburguesa";
 
@@ -68,43 +68,31 @@ export default function App() {
                 setModalVisible={setModalVisible}
                 itemSelected={itemSelected}
             />
-            <View>
-                <Text style={{fontSize: 40, fontWeight: 'bold'}}> Menú </Text>
-            </View>
-            <Hamburguesa/>
-            <Hamburguesa/>
-            <Hamburguesa/>
-            <Hamburguesa/>
-            <Hamburguesa/>
-
-            <View style={{marginTop: 30}}>
+            
+                <Text style={styles.stlmenu}> Menú </Text>
+            <View>            
                 <TextInput
                     onChangeText={handleInputChange}
-                    placeholder='Desea agregar ingredientes a tu pedido?'
+                    placeholder='Qué desea agregar a su pedido?'
                     value={inputValue} style={styles.textInput}/>
                 <Pressable onPress={addItem}>
-                    <Text style={{fontSize: 30, fontWeight: 'bold', padding: 10}}>+</Text>
+                    <Text style={{fontSize: 60, fontWeight: 'bold', padding: 10, marginLeft: 140}}>+</Text>
                 </Pressable>
             </View>
-
-            <View>
-                <Pressable onPress={handleAddCounter}>
-                    <Text style={{fontSize: 30}}> {counter} </Text>
-                </Pressable>
-            </View>
-            <View>
                 <FlatList
                     data={cartItems}
                     renderItem={({item}) => (
-                        <View style={{width: 400}}>
-                            <Text>{item.name}</Text> <Pressable onPress={() => handleModal(item.id)}>
-                            <Text style={{fontSize: 20}}>X</Text>
+                        <View style={{width: 400}}>  
+                            <Text>{item.name}</Text> 
+                        <Pressable onPress={() => handleModal(item.id)}>
+                            <Text style={styles.equis}> X </Text>
                         </Pressable>
                         </View>
-                    )}
+                        )
+                    }
                     keyExtractor={(item) => item.id}
                 />
-            </View>
+            
         </View>
     );
 }
@@ -124,18 +112,31 @@ const styles = StyleSheet.create({
     textoingr: {
         fontSize: 20,
         fontWeight: '300',
-        padding: 10
+        padding: 100
     },
     textInput: {
         backgroundColor: '#87CEEB',
         borderColor: '#FFF8DC',
         borderWidth: 5,
-        borderRadius: 8,
-        width: 400,
-        height: 20,
-        padding: 30,
+        borderRadius: 10,
+        width: '90%',
+        padding: 10,
+        margin: 15
+    },
+    equis: {
+        fontSize: 30, 
+        fontWeight: 'bold',
+        padding: 80,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginLeft: 70
+    },
+    stlmenu: {
+        fontSize: 40, 
+        fontWeight: 'bold', 
+        marginLeft: 100, 
+        marginBottom: 70, 
+        marginTop: 30
     }
 
 });
